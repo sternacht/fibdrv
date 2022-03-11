@@ -20,30 +20,30 @@ int main()
         perror("Failed to open character device");
         exit(1);
     }
-
+    // /*
     for (int i = 0; i <= offset; i++) {
         sz = write(fd, write_buf, strlen(write_buf));
         printf("Writing to " FIB_DEV ", returned the sequence %lld\n", sz);
     }
-
+    /* */
     for (int i = 0; i <= offset; i++) {
         lseek(fd, i, SEEK_SET);
         sz = read(fd, buf, 1);
         printf("Reading from " FIB_DEV
                " at offset %d, returned the sequence "
-               "%lld.\n",
-               i, sz);
+               "%s.\n",
+               i, buf);
     }
-
+    // /*
     for (int i = offset; i >= 0; i--) {
         lseek(fd, i, SEEK_SET);
         sz = read(fd, buf, 1);
         printf("Reading from " FIB_DEV
                " at offset %d, returned the sequence "
-               "%lld.\n",
-               i, sz);
+               "%s.\n",
+               i, buf);
     }
-
+    /**/
     close(fd);
     return 0;
 }

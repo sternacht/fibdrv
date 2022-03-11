@@ -35,7 +35,7 @@ pass = $(PRINTF) "$(PASS_COLOR)$1 Passed [-]$(NO_COLOR)\n"
 check: all
 	$(MAKE) unload
 	$(MAKE) load
-	sudo ./client > out
+	sudo ./client >out
 	$(MAKE) unload
 	@diff -u out scripts/expected.txt && $(call pass)
 	@scripts/verify.py
